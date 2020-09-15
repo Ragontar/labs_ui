@@ -29,12 +29,18 @@ find_package(ROOT REQUIRED)
 include(${ROOT_USE_FILE})
 include_directories(${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS})
 
+file(GLOB SRC
+    "*.h"
+    "*.cpp"
+)
+
 if(ANDROID)
   add_library(labs_ui SHARED
     main.cpp
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    ${SRC}
   )
 else()
   add_executable(labs_ui
@@ -42,7 +48,10 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    ${SRC}
   )
 endif()
+
+
 
 target_link_libraries(labs_ui PRIVATE Qt5::Widgets ${ROOT_LIBRARIES})
