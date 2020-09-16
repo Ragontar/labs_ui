@@ -34,6 +34,11 @@ file(GLOB SRC
     "*.cpp"
 )
 
+file(GLOB LAB1
+    "lab1_src/*.h"
+    "lab1_src/*.cpp"
+)
+
 if(ANDROID)
   add_library(labs_ui SHARED
     main.cpp
@@ -41,6 +46,7 @@ if(ANDROID)
     mainwindow.h
     mainwindow.ui
     ${SRC}
+    ${LAB1}
   )
 else()
   add_executable(labs_ui
@@ -49,6 +55,7 @@ else()
     mainwindow.h
     mainwindow.ui
     ${SRC}
+    ${LAB1}
   )
 endif()
 

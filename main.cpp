@@ -1,10 +1,10 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "includes.h" //общий файл с внешними библиотеками
-#include "lhistcreator2d.h"
-#include "lex1.h"
-#include "lex1_p2.h"
-#include "lex1_p3.h"
+#include "lab1_src/lhistcreator2d.h"
+#include "lab1_src/lex1.h"
+#include "lab1_src/lex1_p2.h"
+#include "lab1_src/lex1_p3.h"
 
 //По-идее, все должно быть готово. Можно начинать делать проект.
 int main(int argc, char *argv[])
