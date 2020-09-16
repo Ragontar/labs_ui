@@ -4,6 +4,7 @@
 #include "lhistcreator2d.h"
 #include "lex1.h"
 #include "lex1_p2.h"
+#include "lex1_p3.h"
 
 //По-идее, все должно быть готово. Можно начинать делать проект.
 int main(int argc, char *argv[])
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
     //LHistCreator2D* HC = new LHistCreator2D(xData, yData);
     //HC->SetHistName("fok");
     //HC->SaveHist();
-    LEx1_p2* dcp = new LEx1_p2(xData, "lab2_hist");
+    LEx1_p3* dcp = new LEx1_p3(xData, yData, "lab3_hist");
     QList<double> res;
     //dcp->setData(xData, yData);
     res = dcp->MNK();

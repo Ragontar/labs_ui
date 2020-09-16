@@ -1,12 +1,11 @@
-#include "lex1_p2.h"
+#include "lex1_p3.h"
 
-
-LEx1_p2::LEx1_p2()
+LEx1_p3::LEx1_p3()
 {
 
 }
 
-LEx1_p2::LEx1_p2(QList<double> xData, TString name)
+LEx1_p3::LEx1_p3(QList<double> xData, QList<double> zData, TString name)
 {
     /*
      * Задает датасет, имя гистограммы, считает Y, и инициализирует ее LHistCreator2D*.
@@ -15,8 +14,12 @@ LEx1_p2::LEx1_p2(QList<double> xData, TString name)
      * Сохраняет гистограмму как .png в корневую директорию
      */
     this->x = xData;
+
+    this->z = zData; //вернуть, нижнюю - удалить
+    //this->generateZ(xData.size());
+
     this->hist_name = name;
-    this->generateY(this->x.size());
+    this->generateY();
     this->initHistCreator();
     this->getCov();
     this->getCorr();
@@ -26,11 +29,20 @@ LEx1_p2::LEx1_p2(QList<double> xData, TString name)
     this->printHist();
 }
 
-void LEx1_p2::generateY(int n)
+void LEx1_p3::generateZ(int n)
 {
-    this->y.clear();
+    this->z.clear();
+    srand(time(0));
     for(int i=0; i<n; i++){
-        y.append(-5.0*this->x[i]+0.6);
+        this->z.append(((double)rand()/(double)RAND_MAX)*10);
     }
+}
 
+void LEx1_p3::generateY()
+{
+    //Y=Z*X
+    this->y.clear();
+    for(int i=0; i<this->x.size(); i++){
+        this->y.append(this->z[i]*this->x[i]);
+    }
 }

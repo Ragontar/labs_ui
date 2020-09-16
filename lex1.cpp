@@ -63,17 +63,21 @@ double LEx1::getT()
 
 void LEx1::generateX(int n)
 {
+    this->x.clear();
     srand(time(0));
     for(int i=0; i<n; i++){
-        this->x[i] = ((double)rand()/(double)RAND_MAX)*10;
+        this->x.append(((double)rand()/(double)RAND_MAX)*10);
+        //this->x[i] = ((double)rand()/(double)RAND_MAX)*10;
     }
 }
 
 void LEx1::generateY(int n)
 {
+    this->y.clear();
     srand(time(0));
     for(int i=0; i<n; i++){
-        this->y[i] = ((double)rand()/(double)RAND_MAX)*10;
+        this->y.append(((double)rand()/(double)RAND_MAX)*10);
+        //this->y[i] = ((double)rand()/(double)RAND_MAX)*10;
     }
 }
 
