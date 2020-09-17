@@ -26,8 +26,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(ROOT REQUIRED)
-include(${ROOT_USE_FILE})
-include_directories(${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS})
+#include(${ROOT_USE_FILE})
+#nclude_directories(${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR})
 
 file(GLOB SRC
     "*.h"
@@ -61,4 +62,6 @@ endif()
 
 
 
-target_link_libraries(labs_ui PRIVATE Qt5::Widgets ${ROOT_LIBRARIES})
+target_link_libraries(labs_ui PUBLIC ROOT::Physics ROOT::Core ROOT::Hist ROOT::MathCore ROOT::Matrix ROOT::TreePlayer ROOT::Tree ROOT::Graf PRIVATE Qt5::Widgets)
+#${ROOT_LIBRARIES}
+#target_link_libraries(labs_ui PRIVATE Qt5::Widgets ${ROOT_LIBRARIES})

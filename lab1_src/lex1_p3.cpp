@@ -2,7 +2,18 @@
 
 LEx1_p3::LEx1_p3()
 {
-
+    const int N = 10;
+    this->hist_name = "lab3_hist";
+    this->generateX(N);
+    this->generateZ(N);
+    this->generateY();
+    this->initHistCreator();
+    this->getCov();
+    this->getCorr();
+    this->getT();
+    this->MNK();
+    this->printRegLine();
+    this->printHist();
 }
 
 LEx1_p3::LEx1_p3(QList<double> xData, QList<double> zData, TString name)
@@ -32,6 +43,7 @@ LEx1_p3::LEx1_p3(QList<double> xData, QList<double> zData, TString name)
 void LEx1_p3::generateZ(int n)
 {
     this->z.clear();
+    sleep(1);
     srand(time(0));
     for(int i=0; i<n; i++){
         this->z.append(((double)rand()/(double)RAND_MAX)*10);

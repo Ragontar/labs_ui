@@ -44,11 +44,13 @@ LHistCreator2D::LHistCreator2D(QList<double> xData, QList<double> yData, TString
         QMessageBox messageBox;
         messageBox.critical(0,"Error","Data set is empty!");
         messageBox.setFixedSize(500,200);
+        return;
     }
     else if(xData.size() != yData.size()){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","Data set is incorrect!");
         messageBox.setFixedSize(500,200);
+        return;
     }
     else{
         std::cout << std::endl;

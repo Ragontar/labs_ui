@@ -2,6 +2,17 @@
 
 LEx1::LEx1()
 {
+    const int N = 10;
+    this->generateX(N);
+    this->generateY(N);
+    this->hist_name = "lab1_hist";
+    this->initHistCreator();
+    this->getCov();
+    this->getCorr();
+    this->getT();
+    this->MNK();
+    this->printRegLine();
+    this->printHist();
 
 }
 
@@ -64,6 +75,7 @@ double LEx1::getT()
 void LEx1::generateX(int n)
 {
     this->x.clear();
+    sleep(1);
     srand(time(0));
     for(int i=0; i<n; i++){
         this->x.append(((double)rand()/(double)RAND_MAX)*10);
@@ -74,6 +86,7 @@ void LEx1::generateX(int n)
 void LEx1::generateY(int n)
 {
     this->y.clear();
+    sleep(1);
     srand(time(0));
     for(int i=0; i<n; i++){
         this->y.append(((double)rand()/(double)RAND_MAX)*10);
