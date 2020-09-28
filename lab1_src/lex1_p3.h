@@ -9,6 +9,7 @@ private:
     QList<double> z;
 public:
     LEx1_p3();
+    LEx1_p3(int);
     LEx1_p3(QList<double>, QList<double>, TString); //Args: X, Z, hist_name
     void generateZ(int);
     void generateY();

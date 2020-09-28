@@ -3,7 +3,7 @@
 
 LEx1_p2::LEx1_p2()
 {
-    const int N = 10;
+    //const int N = 10;
     this->hist_name = "lab2_hist";
     this->generateX(N);
     this->generateY(this->x.size());
@@ -26,6 +26,21 @@ LEx1_p2::LEx1_p2(QList<double> xData, TString name)
      */
     this->x = xData;
     this->hist_name = name;
+    this->generateY(this->x.size());
+    this->initHistCreator();
+    this->getCov();
+    this->getCorr();
+    this->getT();
+    this->MNK();
+    this->printRegLine();
+    this->printHist();
+}
+
+LEx1_p2::LEx1_p2(int n)
+{
+    this->setN(n);
+    this->hist_name = "lab2_hist";
+    this->generateX(N);
     this->generateY(this->x.size());
     this->initHistCreator();
     this->getCov();

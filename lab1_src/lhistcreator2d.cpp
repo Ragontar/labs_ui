@@ -1,4 +1,5 @@
 #include "lhistcreator2d.h"
+#include <unistd.h>
 /*
  *
  * РЕАЛИЗАЦИЯ КОНСТРУКТОРОВ
@@ -74,7 +75,7 @@ LHistCreator2D::LHistCreator2D(QList<double> xData, QList<double> yData, TString
  */
 bool LHistCreator2D::SaveHist(){
     char wd[1024];
-    getwd(wd);
+    getcwd(wd, 1024);
     TString path = wd;
     if(this->hist_name == ""){
         this->c1->SaveAs(path + "/hist.png");

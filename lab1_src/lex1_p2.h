@@ -7,6 +7,7 @@ class LEx1_p2 : public LEx1
 public:
     LEx1_p2();
     LEx1_p2(QList<double>, TString);
+    LEx1_p2(int);
     void generateY(int);
 };
 

@@ -40,9 +40,16 @@ void MainWindow::on_radioButton_3_toggled(bool checked)
     this->ui->stackedWidget_Output->setCurrentIndex(2);
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButton_2_clicked() //p1 rand
 {
-    LEx1* lab = new LEx1();
+    LEx1* lab = nullptr;
+    if(this->ui->entries_LineEdit->text().isEmpty()){
+        lab = new LEx1();
+    }
+    else{
+        lab = new LEx1(this->ui->entries_LineEdit->text().toInt());
+    }
+
 
     QGraphicsScene* scene = new QGraphicsScene;
     QImage image("lab1_hist.png"); //в конструктор - путь
@@ -58,11 +65,35 @@ void MainWindow::on_pushButton_2_clicked()
     this->ui->cov_lineEdit->setText(cov);
     this->ui->corr_lineEdit->setText(corr);
     this->ui->T_lineEdit->setText(T);
+
+    QString cov_m, corr_m, T_m;
+    cov_m = QString::number(lab->getCov_manual());
+    corr_m = QString::number(lab->getCorr_manual());
+    T_m = QString::number(lab->getT_manual());
+
+    this->ui->cov_manual_lineEdit->setText(cov_m);
+    this->ui->corr_manual_lineEdit->setText(corr_m);
+    this->ui->T_manual_lineEdit->setText(T_m);
+
+    QMessageBox log;
+    double k = lab->getK();
+    double b = lab->getB();
+    QString results = "k = " + QString::number(k) + "\nb = " +  QString::number(b);
+    log.information(0, "Regression line parameters: ", results);
+    log.setFixedSize(500,200);
+
 }
 
 void MainWindow::on_pushButton_p2_rand_clicked()
 {
-    LEx1_p2* lab = new LEx1_p2();
+
+    LEx1_p2* lab = nullptr;
+    if(this->ui->entries_LineEdit->text().isEmpty()){
+        lab = new LEx1_p2();
+    }
+    else{
+        lab = new LEx1_p2(this->ui->entries_LineEdit->text().toInt());
+    }
 
     QGraphicsScene* scene = new QGraphicsScene;
     QImage image("lab2_hist.png"); //в конструктор - путь
@@ -78,11 +109,33 @@ void MainWindow::on_pushButton_p2_rand_clicked()
     this->ui->cov_lineEdit_2->setText(cov);
     this->ui->corr_lineEdit_2->setText(corr);
     this->ui->T_lineEdit_2->setText(T);
+
+    QString cov_m, corr_m, T_m;
+    cov_m = QString::number(lab->getCov_manual());
+    corr_m = QString::number(lab->getCorr_manual());
+    T_m = QString::number(lab->getT_manual());
+
+    this->ui->cov_manual_lineEdit->setText(cov_m);
+    this->ui->corr_manual_lineEdit->setText(corr_m);
+    this->ui->T_manual_lineEdit->setText(T_m);
+
+    QMessageBox log;
+    double k = lab->getK();
+    double b = lab->getB();
+    QString results = "k = " + QString::number(k) + "\nb = " +  QString::number(b);
+    log.information(0, "Regression line parameters: ", results);
+    log.setFixedSize(500,200);
 }
 
 void MainWindow::on_pushButton_p3_rand_clicked()
 {
-    LEx1_p3* lab = new LEx1_p3();
+    LEx1_p3* lab = nullptr;
+    if(this->ui->entries_LineEdit->text().isEmpty()){
+        lab = new LEx1_p3();
+    }
+    else{
+        lab = new LEx1_p3(this->ui->entries_LineEdit->text().toInt());
+    }
 
     QGraphicsScene* scene = new QGraphicsScene;
     QImage image("lab3_hist.png"); //в конструктор - путь
@@ -98,6 +151,22 @@ void MainWindow::on_pushButton_p3_rand_clicked()
     this->ui->cov_lineEdit_3->setText(cov);
     this->ui->corr_lineEdit_3->setText(corr);
     this->ui->T_lineEdit_3->setText(T);
+
+    QString cov_m, corr_m, T_m;
+    cov_m = QString::number(lab->getCov_manual());
+    corr_m = QString::number(lab->getCorr_manual());
+    T_m = QString::number(lab->getT_manual());
+
+    this->ui->cov_manual_lineEdit->setText(cov_m);
+    this->ui->corr_manual_lineEdit->setText(corr_m);
+    this->ui->T_manual_lineEdit->setText(T_m);
+
+    QMessageBox log;
+    double k = lab->getK();
+    double b = lab->getB();
+    QString results = "k = " + QString::number(k) + "\nb = " +  QString::number(b);
+    log.information(0, "Regression line parameters: ", results);
+    log.setFixedSize(500,200);
 }
 
 void MainWindow::on_pushButton_clicked()

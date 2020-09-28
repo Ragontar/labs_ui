@@ -2,7 +2,7 @@
 
 LEx1::LEx1()
 {
-    const int N = 10;
+    //const int N = 10;
     this->generateX(N);
     this->generateY(N);
     this->hist_name = "lab1_hist";
@@ -14,6 +14,21 @@ LEx1::LEx1()
     this->printRegLine();
     this->printHist();
 
+}
+
+LEx1::LEx1(int n)
+{
+    this->setN(n);
+    this->generateX(N);
+    this->generateY(N);
+    this->hist_name = "lab1_hist";
+    this->initHistCreator();
+    this->getCov();
+    this->getCorr();
+    this->getT();
+    this->MNK();
+    this->printRegLine();
+    this->printHist();
 }
 
 LEx1::LEx1(QList<double> x, QList<double> y, TString name)
@@ -40,6 +55,11 @@ void LEx1::setData(QList<double> x, QList<double> y)
 {
     this->x = x;
     this->y = y;
+}
+
+void LEx1::setN(int n)
+{
+    this->N = n;
 }
 
 QList<double> LEx1::getX()
@@ -70,6 +90,57 @@ double LEx1::getT()
 {
     this->T = this->corr*sqrt(this->x.size()-2)/sqrt(1-this->corr*this->corr);
     return this->T;
+}
+
+double LEx1::getCov_manual()
+{
+    this->cov_m = 0;
+    double x_avg, y_avg;
+    x_avg = this->avg(x);
+    y_avg = this->avg(y);
+
+    for(int i = 0; i < x.size(); i++) this->cov_m += (y[i] - y_avg)*(x[i] - x_avg);
+    return cov_m/x.size();
+}
+
+double LEx1::getCorr_manual()
+{
+    corr_m = 0;
+    double sigma_x = this->sigma(x);
+    double sigma_y = this->sigma(y);
+    corr_m = cov_m/(sigma_x*sigma_y);
+    return corr_m;
+}
+
+double LEx1::getT_manual()
+{
+    this->T_m = this->corr_m*sqrt(this->x.size()-2)/sqrt(1-this->corr_m*this->corr_m);
+    return this->T_m;
+}
+
+double LEx1::getK()
+{
+    return k;
+}
+
+double LEx1::getB()
+{
+    return b;
+}
+
+double LEx1::avg(QList<double> x)
+{
+    double avg = 0;
+    for(int i = 0; i < x.size(); i++) avg += x[i];
+    return avg/x.size();
+}
+
+double LEx1::sigma(QList<double> x)
+{
+    double x_avg = this->avg(x);
+    double sigma = 0;
+    for(int i = 0; i < x.size(); i++) sigma += (x[i] - x_avg)*(x[i] - x_avg);
+    return sqrt(sigma);
 }
 
 void LEx1::generateX(int n)

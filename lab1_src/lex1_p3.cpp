@@ -2,7 +2,23 @@
 
 LEx1_p3::LEx1_p3()
 {
-    const int N = 10;
+    //const int N = 10;
+    this->hist_name = "lab3_hist";
+    this->generateX(N);
+    this->generateZ(N);
+    this->generateY();
+    this->initHistCreator();
+    this->getCov();
+    this->getCorr();
+    this->getT();
+    this->MNK();
+    this->printRegLine();
+    this->printHist();
+}
+
+LEx1_p3::LEx1_p3(int n)
+{
+    this->setN(n);
     this->hist_name = "lab3_hist";
     this->generateX(N);
     this->generateZ(N);
