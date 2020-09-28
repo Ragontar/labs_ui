@@ -38,6 +38,8 @@ file(GLOB SRC
 file(GLOB LAB1
     "lab1_src/*.h"
     "lab1_src/*.cpp"
+    "lab2_src/*.h"
+    "lab2_src/*.cpp"
 )
 
 if(ANDROID)

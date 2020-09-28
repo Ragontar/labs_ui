@@ -8,6 +8,7 @@
 #include <lab1_src/lex1_p2.h>
 #include <lab1_src/lex1_p3.h>
 #include "lab1_src/etc.h"
+#include <lab2_src/lex2.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
